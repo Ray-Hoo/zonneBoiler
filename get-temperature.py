@@ -17,7 +17,7 @@ def tempRead():
         if temperature_output != -1:
                 temperature_string = lines[1].strip()[temperature_output+2:]
                 temperature_c = float(temperature_string)/1000
-        return round(temperature_c,1)
+        return round(temperature_c,2)
 
 while True:
     temperature = tempRead()
