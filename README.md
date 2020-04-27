@@ -61,10 +61,10 @@ sudo apt-get install python-mysqldb
 Nu moet eerst in mysql een database gemaakt worden en een user om deze te vullen:
 ```
 sudo mysql -u root
-CREATE DATABASE temp_database;
-USE temp_database;
-CREATE TABLE tempLog(datetime DATETIME NOT NULL, temperature FLOAT(5,2) NOT NULL);
+CREATE DATABASE temperatuur_database;
+USE temperatuur_database;
+CREATE TABLE temperatuurLog(datetime DATETIME NOT NULL, temperatuur FLOAT(5,2) NOT NULL);
 CREATE USER 'gebruiker'@'localhost' IDENTIFIED BY 'wachtwoord';
-GRANT ALL PRIVILEGES ON temp_database . * TO 'gebruiker'@'localhost';
+GRANT ALL PRIVILEGES ON temperatuur_database . * TO 'gebruiker'@'localhost';
 ```
 
