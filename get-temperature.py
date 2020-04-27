@@ -8,7 +8,8 @@ from time import strftime
 #change 28-0517c026dbff to the address of your sensor
 temperature_sensor = '/sys/bus/w1/devices/28-0517c026dbff/w1_slave'
 
-def tempRead():
+#read the temperature and process the data
+def temperatureRead():
         t = open(temperature_sensor, 'r')
         lines = t.readlines()
         t.close()
@@ -19,8 +20,9 @@ def tempRead():
                 temperature_c = float(temperature_string)/1000
         return round(temperature_c,2)
 
+#write the temperature with date and time to the screen
 while True:
-    temperature = tempRead()
+    temperature = temperatureRead()
     print temperature
     datetimeWrite = (time.strftime("%d-%m-%Y ") + time.strftime("%H:%M:%S"))
     print datetimeWrite
