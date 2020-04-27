@@ -6,6 +6,7 @@ Benodigdheden:
 - Raspberry Pi
 - DS18B20 sensor (aan kabel)
 - Zonneboiler
+- Toon thermostaat
 
 Stel op de Raspberry Pi het gebruik van het 1-wire protocol in.
 
@@ -51,3 +52,19 @@ uit om de ruwe waarde te zien:
 f4 01 4b 46 7f ff 0c 10 c7 : crc=c7 YES
 f4 01 4b 46 7f ff 0c 10 c7 t=31250
 ```
+Nu de waarden gelezen kunnen worden, willen we dit natuurlijk iedere 5 minuten doen en deze opslaan in een database en deze tonen op een web-pagina. Hiervoor gaan we nu eerst diverse packages installeren:
+```
+sudo apt-get install apache2 php libapache2-mod-php
+sudo apt-get install mysql-server mysql-client php-mysql
+sudo apt-get install python-mysqldb
+```
+Nu moet eerst in mysql een database gemaakt worden en een user om deze te vullen:
+```
+sudo mysql -u root
+CREATE DATABASE temp_database;
+USE temp_database;
+CREATE TABLE tempLog(datetime DATETIME NOT NULL, temperature FLOAT(5,2) NOT NULL);
+CREATE USER 'gebruiker'@'localhost' IDENTIFIED BY 'wachtwoord';
+GRANT ALL PRIVILEGES ON temp_database . * TO 'gebruiker'@'localhost';
+```
+
