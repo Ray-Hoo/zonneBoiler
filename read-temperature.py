@@ -25,7 +25,7 @@ def temperatureRead():
         temperature_c = float(temp_string)/1000
     return round(temperature_c,2)
 
-#write the temperature with date and time onto the screen and the SQL database
+#write the temperature with date and time onto the screen and into the SQL database
 while True:
     temperature = temperatureRead()
     print temperature
