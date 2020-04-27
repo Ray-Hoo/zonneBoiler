@@ -6,7 +6,7 @@ Benodigdheden:
 - Raspberry Pi
 - DS18B20 sensor (aan kabel)
 - Zonneboiler
-- Toon thermostaat
+- Toon thermostaat (rooted)
 
 Stel op de Raspberry Pi het gebruik van het 1-wire protocol in.
 
