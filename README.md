@@ -33,3 +33,21 @@ Voeg hieraan net voor *"exit 0"* het volgende toe:
 # start one wire protocol on gpiopin 25
 sudo dtoverlay w1-gpio gpiopin=25 pullup=0
 ```
+
+Nu kun je de temperatuur uitlezen op de volgende locatie:
+```
+cd /sys/bus/w1/devices
+```
+Ga dan naar het adres van jouw sensor bijvoorbeeld:
+```
+cd 28-0517c026dbff
+```
+Voer hier:
+```
+cat w1_slave
+```
+uit om de ruwe waarde te zien:
+```
+f4 01 4b 46 7f ff 0c 10 c7 : crc=c7 YES
+f4 01 4b 46 7f ff 0c 10 c7 t=31250
+```
