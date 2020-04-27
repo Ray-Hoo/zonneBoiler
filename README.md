@@ -52,13 +52,13 @@ uit om de ruwe waarde te zien:
 f4 01 4b 46 7f ff 0c 10 c7 : crc=c7 YES
 f4 01 4b 46 7f ff 0c 10 c7 t=31250
 ```
-Nu de waarden gelezen kunnen worden, willen we dit natuurlijk iedere 5 minuten doen en deze opslaan in een database en deze tonen op een web-pagina. Hiervoor gaan we nu eerst diverse packages installeren:
+Nu de waarden gelezen kunnen worden, willen we dit natuurlijk iedere 5 minuten doen en deze opslaan in een database en deze tonen op een web-pagina, zodat we er vanaf een Toon thermostaat bij kunnen. Hiervoor gaan we nu eerst diverse packages installeren op de Raspberry Pi:
 ```
 sudo apt-get install apache2 php libapache2-mod-php
 sudo apt-get install mysql-server mysql-client php-mysql
 sudo apt-get install python-mysqldb
 ```
-Nu moet eerst in mysql een database gemaakt worden en een user om deze te vullen:
+Nu moet eerst in mysql een database gemaakt worden en een user zodat we deze kunnen gaan vullen:
 ```
 sudo mysql -u root
 CREATE DATABASE temperatuur_database;
