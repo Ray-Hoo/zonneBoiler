@@ -63,7 +63,7 @@ Nu moet eerst in mysql een database gemaakt worden en een user zodat we deze kun
 sudo mysql -u root
 CREATE DATABASE temperatuur_database;
 USE temperatuur_database;
-CREATE TABLE temperatuurLog(datetime DATETIME NOT NULL, temperatuur FLOAT(5,2) NOT NULL);
+CREATE TABLE temperatuurLog(datumtijd DATETIME NOT NULL, temperatuur FLOAT(5,2) NOT NULL);
 CREATE USER 'gebruiker'@'localhost' IDENTIFIED BY 'wachtwoord';
 GRANT ALL PRIVILEGES ON temperatuur_database . * TO 'gebruiker'@'localhost';
 ```
