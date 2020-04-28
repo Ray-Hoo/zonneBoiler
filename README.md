@@ -1,12 +1,11 @@
 # zonneBoiler
-Meet de temperatuur van je zonneBoiler en toon dit op de Toon thermostaat.
+Meet de temperatuur van je zonneBoiler en zet dit in een MariaDB/mySQL database.
 
 Benodigdheden:
 
 - Raspberry Pi
 - DS18B20 sensor (aan kabel)
 - Zonneboiler
-- Toon thermostaat (rooted)
 
 Stel op de Raspberry Pi het gebruik van het 1-wire protocol in.
 
