@@ -25,7 +25,7 @@ if (mysqli_connect_errno()) {
 
 mysqli_select_db($con,$database) or die( "Unable to select the database");
 
-$query="SELECT * FROM tempLog ORDER BY tempLog.datetime DESC LIMIT 1";
+$query="SELECT * FROM temperatuurLog ORDER BY temperatuurLog.date DESC , temperatuurLog.time DESC LIMIT 1";
 $result=mysqli_query($con,$query);
 
 $num=mysqli_fetch_row($result)[0];
@@ -34,12 +34,15 @@ mysqli_close($con);
 
 
         $dateAndTemps = array();
-        $datetime = mysqli_result($result,0,"datetime");
-        $temperature = mysqli_result($result,0,"temperature");
+        $origdate = mysqli_result($result,0,"date");
+        $date = date("d/m/Y", strtotime($origdate));
+        $origtime = mysqli_result($result,0,"time");
+        $time = date("H:i", strtotime($origtime));
+        $temp = mysqli_result($result,0,"temperature");
 
-        $dateAndTemps["Date"] = $datetime;
-        $dateAndTemps["Temperature"] = $temperature;
-
+        $dateAndTemps["Date"] = $date;
+        $dateAndTemps["Time"] = $time;
+        $dateAndTemps["Temperature"] = $temp;
         $tempValues=$dateAndTemps;
 
 header('Content-Type: application/json');

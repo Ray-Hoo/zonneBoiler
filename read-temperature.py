@@ -22,16 +22,17 @@ def temperatureRead():
     temperature_output = lines[1].find('t=')
     if temperature_output != -1:
         temperature_string = lines[1].strip()[temperature_output+2:]
-        temperature_c = float(temp_string)/1000
+        temperature_c = float(temperature_string)/1000
     return round(temperature_c,2)
 
 #write the temperature with date and time onto the screen and into the SQL database
 while True:
     temperature = temperatureRead()
     print temperature
-    datetimeWrite = (time.strftime("%d-%m-%Y ") + time.strftime("%H:%M:%S"))
-    print datetimeWrite
-    sql = ("""INSERT INTO temperatuurLog (datumtijd,temperatuur) VALUES (%s,%s)""",(datetimeWrite,temperature))
+    datewrite = time.strftime("%Y-%m-%d ") 
+    timewrite = time.strftime("%H:%M:%S")
+    print (datewrite + " @ " + timewrite)
+    sql = ("""INSERT INTO temperatuurLog (datum,tijd,temperatuur) VALUES (%s,%s,%s)""",(datewrite,timewrite,temperature))
     try:
         print "Writing the data to the database..."
         # Executing the SQL command
