@@ -1,4 +1,4 @@
-!/usr/bin/env python
+#!/usr/bin/env python
 import os
 import time
 import datetime
@@ -24,6 +24,6 @@ def temperatureRead():
 while True:
     temperature = temperatureRead()
     print temperature
-    datetimeWrite = (time.strftime("%d-%m-%Y ") + time.strftime("%H:%M:%S"))
+    datetimeWrite = (time.strftime("%d-%m-%Y ") + "@ "+ time.strftime("%H:%M:%S"))
     print datetimeWrite
     break
