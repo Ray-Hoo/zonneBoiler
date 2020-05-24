@@ -62,8 +62,52 @@ Nu moet eerst in mysql een database gemaakt worden en een user zodat we deze kun
 sudo mysql -u root
 CREATE DATABASE temperatuur_database;
 USE temperatuur_database;
-CREATE TABLE temperatuurLog(datumtijd DATETIME NOT NULL, temperatuur FLOAT(5,2) NOT NULL);
+CREATE TABLE temperatuurLog(date DATE NOT NULL, time TIME NOT NULL, temperature FLOAT(5,2) NOT NULL);
 CREATE USER 'gebruiker'@'localhost' IDENTIFIED BY 'wachtwoord';
 GRANT ALL PRIVILEGES ON temperatuur_database . * TO 'gebruiker'@'localhost';
 ```
+Nu de database er is moet deze natuurlijk gevuld gaan worden. Dit kan met het script:
+```
+read-temperature.py
+```
+Hierin moeten de volgende wijzigingen gemaakt worden:
+```
+- Wijzig bij temperature_sensor deze waarde: 28-0517c026dbff , naar de waarde van jouw sensor
+- Wijzig bij # MySQL/MariaDB variables de volgende waardes:
+  - localhost (als de MariaDB niet lokaal staat)
+  - gebruiker
+  - wachtwoord
+  - temperatuur_database (als je een andere naam gekozen hebt voor de database)
+```
+Voer het script handmatig uit om te kijken of het werkt:
+```
+./read-temperature.py
+```
+Als deze succesvol is dan kun je dit automatisch elke x minuten laten lopen. Pas hiervoor de crontab aan met crontab -e en voeg hierin de volgende regel toe (voor elke 5 minuten). Zorg wel dat het pad klopt naar read-temperature.py.
+```
+*/5 * * * * /pad/naar/read-temperature.py
+```
+Om de data zichtbaar en bruikbaar te maken zetten we het bestand get-temperature.php in de directory /var/www/html Pas hierin de volgende variabele aan naar de door jou gebruikte waarden:
+```
+$serverip="ip-adres";
+$portnumber="port-number";
+$username="username";
+$password="password";
+$database="temperatuur_database";
 
+```
+Door nu naar het ip-adres van je raspberry te gaan kun je de waarde zien:
+```
+http://ip-adres-raspberry-pi/get-temperature.php
+```
+Dit geeft dan bijvoorbeeld het volgende resultaat:
+```
+raw data:
+{"Date":"24\/05\/2020","Time":"15:40","Temperature":"28.94"}
+
+Of als JSON opgemaakt door de browser:
+Date	"24/05/2020"
+Time	"15:40"
+Temperature	"28.94"
+```
+Deze data kan nu gebruikt worden voor andere doeleinden zoals bijvoorbeeld de zonneboilerStat app voor op de Toon.
