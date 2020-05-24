@@ -12,11 +12,13 @@ function mysqli_result($res,$row=0,$col=0){
     return false;
 }
 
+$serverip=ip-adres
+$portnumber=port-number
 $username="username";
 $password="password";
 $database="temperatuur_database";
 
-$con=mysqli_connect('ip-adres:poortnummer',$username,$password);
+$con=mysqli_connect($serverip:$portnumber,$username,$password);
 
 if (mysqli_connect_errno()) {
   echo "Failed to connect to the SQL-database: " . mysqli_connect_error();
