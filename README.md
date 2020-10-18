@@ -110,4 +110,4 @@ Date	"24/05/2020"
 Time	"15:40"
 Temperature	"28.94"
 ```
-Deze data kan nu gebruikt worden voor andere doeleinden zoals bijvoorbeeld de zonneboilerStat app voor op de Toon.
+Deze data kan nu gebruikt worden voor andere doeleinden zoals bijvoorbeeld de zonneboilerStat app voor op de Toon. Zie: https://github.com/Ray-Hoo/zonneboilerStats
