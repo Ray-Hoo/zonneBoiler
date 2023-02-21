@@ -7,7 +7,13 @@ Benodigdheden:
 - DS18B20 sensor (aan kabel)
 - Zonneboiler
 
-Stel op de Raspberry Pi het gebruik van het 1-wire protocol in.
+Het aansluiten van de DS18B20 op je Raspberry Pi doe je op eigen risico en als die uit staat! Ik heb de mijne als volgt aangesloten:
+
+- Pin 17 (3.3V) <-> Vdd
+- Pin 20 (Ground) <-> GND
+- Pin 22 (GPIO 25) <-> DQ
+
+Start nu de Raspberry Pi op en stel hem in voor het gebruik van het 1-wire protocol.
 
 ```
 sudo modprobe w1-gpio
@@ -72,7 +78,8 @@ read-temperature.py
 ```
 Hierin moeten de volgende wijzigingen gemaakt worden:
 ```
-- Wijzig bij temperature_sensor deze waarde: 28-0517c026dbff , naar de waarde van jouw sensor
+- Wijzig bij temperature_sensor deze waarde: 28-0517c026dbff , naar de waarde van jouw sensor.
+
 - Wijzig bij # MySQL/MariaDB variables de volgende waardes:
   - localhost (als de MariaDB niet lokaal staat)
   - gebruiker
