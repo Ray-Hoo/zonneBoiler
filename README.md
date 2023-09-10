@@ -61,7 +61,7 @@ Nu de waarden gelezen kunnen worden, willen we dit natuurlijk iedere 5 minuten d
 ```
 sudo apt-get install apache2 php libapache2-mod-php
 sudo apt-get install mariadb-server mariadb-client php-mysql
-sudo apt-get install python-mysqldb
+pip install mysqlclient
 ```
 Nu moet eerst in mysql een database gemaakt worden en een user zodat we deze kunnen gaan vullen:
 ```
